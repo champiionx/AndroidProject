@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "777002136356",
+    "firebase_url": "https://chinechat-d850c.firebaseio.com",
+    "project_id": "chinechat-d850c",
+    "storage_bucket": "chinechat-d850c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777002136356:android:7471b56ff82255ce37b9b1",
+        "android_client_info": {
+          "package_name": "com.example.chinechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777002136356-7fo3bt6gekl60e4c131ug947u67t8qj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqKGFVOK9ddUbW6Hmn9wjVSxeL_OZDUrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777002136356-7fo3bt6gekl60e4c131ug947u67t8qj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
