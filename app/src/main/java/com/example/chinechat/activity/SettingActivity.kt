@@ -67,7 +67,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_change_profile.setOnClickListener {
+        btn_start_chat.setOnClickListener {
             var galleryIntent = Intent()
             galleryIntent.type = "image/*"
             galleryIntent.action = Intent.ACTION_GET_CONTENT

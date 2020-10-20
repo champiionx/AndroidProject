@@ -18,4 +18,5 @@
     <string name="change_status">CHANGE STATUS</string>
     <string name="status_change">STATUS</string>
     <string name="update_status">UPDATE STATUS</string>
+    <string name="chat">CHAT</string>
 </resources>
