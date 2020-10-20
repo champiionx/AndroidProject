@@ -16,4 +16,17 @@ class UserHolder(val customView: View) : RecyclerView.ViewHolder(customView){
             Picasso.get().load(user.thumb_image).placeholder(R.drawable.ic_profile).into(customView.image_user_row)
         }
     }
+
+    fun bind(user:User , recent:String){
+        customView.txt_name_row?.setText(user.name)
+        if (recent != null && recent != "null"){
+            customView.txt_status_row?.setText(recent)
+        }else {
+            customView.txt_status_row?.setText("")
+        }
+        if(!user.thumb_image!!.equals("default")){
+            Picasso.get().load(user.thumb_image).placeholder(R.drawable.ic_profile).into(customView.image_user_row)
+        }
+
+    }
 }

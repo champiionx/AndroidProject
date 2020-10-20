@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ChatActivity"></activity>
-        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.ChatActivity" android:parentActivityName=".activity.DashboardActivity" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activity.ProfileActivity" android:parentActivityName=".activity.DashboardActivity" />
         <activity android:name=".activity.StatusActivity" />
-        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.SettingActivity" android:parentActivityName=".activity.DashboardActivity" />
         <activity android:name=".activity.DashboardActivity" />
-        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.SignUpActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

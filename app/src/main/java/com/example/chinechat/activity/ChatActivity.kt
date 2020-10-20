@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chinechat.R
-import com.example.chinechat.model.Message
-import com.example.chinechat.model.MessageHolder
-import com.example.chinechat.model.User
-import com.example.chinechat.model.UserHolder
+import com.example.chinechat.model.*
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -19,8 +16,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.actionbar_chat.view.*
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.message_row.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 
@@ -29,6 +30,10 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+
 
         mDatabase = FirebaseDatabase.getInstance()
         mAuth = FirebaseAuth.getInstance()
@@ -92,6 +97,12 @@ class ChatActivity : AppCompatActivity() {
 
                             rv_chat.layoutManager = linearLayoutManager
                             rv_chat.adapter = adapter
+
+                            var actionbar = inflater.inflate(R.layout.actionbar_chat, null)
+                            actionbar.txt_bar_name.text = friendUser!!.name
+                            Picasso.get().load(friendUser!!.thumb_image).placeholder(R.drawable.ic_profile).into(actionbar.im_bar)
+
+                            supportActionBar!!.customView = actionbar
                         }
 
                         override fun onCancelled(error: DatabaseError) {
@@ -119,6 +130,17 @@ class ChatActivity : AppCompatActivity() {
                     var message = Message(userId,text)
 
                     messageRef.setValue(message)
+
+                    var dateFormat = SimpleDateFormat("yyMMddHHmmssSSS")
+                    var date = dateFormat.format(Date())
+
+                    var recentRef = mDatabase!!.reference.child("Chat").child(userId).child(friendId).child("Recent")
+                    var friendRecentRef = mDatabase!!.reference.child("Chat").child(friendId).child(userId).child("Recent")
+
+                    var recentChat = RecentChat(date,message.message!!)
+                    recentRef.setValue(recentChat)
+                    friendRecentRef.setValue(recentChat)
+
                 }
 
         }
